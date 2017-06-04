@@ -2,41 +2,56 @@ import React from 'react';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
-import Feed from '../screens/Feed';
+import Inventory from '../screens/Feed';
 import Settings from '../screens/Settings';
 import UserDetail from '../screens/UserDetail';
 import Me from '../screens/Me';
+import History from '../screens/History';
+import NewItem from '../screens/NewItem';
 
 export const FeedStack = StackNavigator({
-  Feed: {
-    screen: Feed,
+  Inventory: {
+    screen: Inventory,
     navigationOptions: {
-      title: 'Feed',
+      title: 'Inventory',
     },
   },
   Details: {
     screen: UserDetail,
     navigationOptions: ({ navigation }) => ({
-      title: `${navigation.state.params.name.first.toUpperCase()} ${navigation.state.params.name.last.toUpperCase()}`,
+      title: `${navigation.state.params.name}`
     }),
   },
+  History: {
+    screen: History,
+    navigationOptions: {
+      title: "Order History"
+    }
+  }
 });
 
 export const Tabs = TabNavigator({
-  Feed: {
+  Inventory: {
     screen: FeedStack,
     navigationOptions: {
-      tabBarLabel: 'Feed',
+      tabBarLabel: 'Inventory',
       tabBarIcon: ({ tintColor }) => <Icon name="list" size={35} color={tintColor} />,
     },
   },
-  Me: {
+  New: {
+    screen: NewItem,
+    navigationOptions: {
+      tabBarLabel: 'New Item',
+      tabBarIcon: ({ tintColor }) => <Icon name="note-add" size ={30} color={tintColor} />
+    }
+  },
+  Me: { // TODO change all this stuff to settings
     screen: Me,
     navigationOptions: {
-      tabBarLabel: 'Me',
-      tabBarIcon: ({ tintColor }) => <Icon name="account-circle" size={35} color={tintColor} />
+      tabBarLabel: 'Settings',
+      tabBarIcon: ({ tintColor }) => <Icon name="account-circle" size={30} color={tintColor} />
     },
-  },
+  }
 });
 
 export const SettingsStack = StackNavigator({

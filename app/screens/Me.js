@@ -12,10 +12,10 @@ class Me extends Component {
     return (
       <ScrollView>
         <Tile
-          imageSrc={{ uri: this.props.picture.large}}
+          imageSrc={{ uri: "http://duncanflynn.com/wp-content/uploads/2014/11/white-square.jpg"}}
           featured
-          title={`${this.props.name.first.toUpperCase()} ${this.props.name.last.toUpperCase()}`}
-          caption={this.props.email}
+          title="Movebutter"
+          caption="Configure stuff here."
         />
 
         <Button
@@ -26,34 +26,13 @@ class Me extends Component {
 
         <List>
           <ListItem
-            title="Email"
-            rightTitle={this.props.email}
+            title="Field 1"
+            rightTitle="Enter some value..."
             hideChevron
           />
           <ListItem
-            title="Phone"
-            rightTitle={this.props.phone}
-            hideChevron
-          />
-        </List>
-
-        <List>
-          <ListItem
-            title="Username"
-            rightTitle={this.props.login.username}
-            hideChevron
-          />
-        </List>
-
-        <List>
-          <ListItem
-            title="Birthday"
-            rightTitle={this.props.dob}
-            hideChevron
-          />
-          <ListItem
-            title="City"
-            rightTitle={this.props.location.city}
+            title="Field 2"
+            rightTitle="Another value..."
             hideChevron
           />
         </List>

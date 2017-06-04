@@ -5,24 +5,26 @@ import {
   ScrollView
 } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
-import { users } from '../config/data';
+import { items } from '../config/data';
 
-class Feed extends Component {
+class Inventory extends Component {
   onLearnMore = (user) => {
     this.props.navigation.navigate('Details', { ...user });
   };
 
   render() {
     return (
-      <ScrollView>
+      <ScrollView
+        style={{paddingTop: 0}}
+      >
         <List>
-          {users.map((user) => (
+          {items.map((user) => (
             <ListItem
               key={user.login.username}
               roundAvatar
               avatar={{ uri: user.picture.thumbnail }}
-              title={`${user.name.first.toUpperCase()} ${user.name.last.toUpperCase()}`}
-              subtitle={user.email}
+              title={`${user.name.toUpperCase()} `}
+              subtitle={user.quantity}
               onPress={() => this.onLearnMore(user)}
             />
           ))}
@@ -32,4 +34,4 @@ class Feed extends Component {
   }
 }
 
-export default Feed;
+export default Inventory;

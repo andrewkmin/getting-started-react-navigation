@@ -3,49 +3,45 @@ import { ScrollView } from 'react-native';
 import { Tile, List, ListItem } from 'react-native-elements';
 
 class UserDetail extends Component {
+
+  viewHistory = (name) => {
+    this.props.navigation.navigate('History', name);
+  };
+
   render() {
-    const { picture, name, email, phone, login, dob, location } = this.props.navigation.state.params;
+    const { picture, name, description, phone, login, dob, location, quantity, date } = this.props.navigation.state.params;
 
     return (
       <ScrollView>
         <Tile
           imageSrc={{ uri: picture.large}}
           featured
-          title={`${name.first.toUpperCase()} ${name.last.toUpperCase()}`}
-          caption={email}
+          title={`${name.toUpperCase()}`}
+          caption={description}
         />
 
         <List>
           <ListItem
-            title="Email"
-            rightTitle={email}
+            title="Description"
+            rightTitle={description}
+            rightTitleStyle={{color: '#000000'}}
             hideChevron
           />
           <ListItem
-            title="Phone"
-            rightTitle={phone}
-            hideChevron
-          />
-        </List>
-
-        <List>
-          <ListItem
-            title="Username"
-            rightTitle={login.username}
-            hideChevron
-          />
-        </List>
-
-        <List>
-          <ListItem
-            title="Birthday"
-            rightTitle={dob}
+            title="Quantity"
+            rightTitle={quantity}
+            rightTitleStyle={{color: '#000000'}}
             hideChevron
           />
           <ListItem
-            title="City"
-            rightTitle={location.city}
+            title="Last Order"
+            rightTitle={date}
+            rightTitleStyle={{color: '#000000'}}
             hideChevron
+          />
+          <ListItem
+            title="Order History"
+            onPress={() => this.viewHistory(name)}
           />
         </List>
       </ScrollView>
